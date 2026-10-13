@@ -1,0 +1,25 @@
+{"question": "Apa itu RAG?", "answer": "Retrieval-Augmented Generation: teknik yang menggabungkan pencarian dokumen (retrieval) dengan LLM, sehingga jawaban dihasilkan berdasarkan dokumen sendiri dan mengurangi halusinasi."}
+{"question": "Apa itu embedding?", "answer": "Representasi teks sebagai vektor angka yang menangkap makna. Teks yang maknanya mirip akan memiliki vektor yang berdekatan."}
+{"question": "Apa itu vector database?", "answer": "Database yang menyimpan embedding dan bisa mencari vektor tetangga terdekat dengan cepat. Contoh: Qdrant, pgvector, Chroma."}
+{"question": "Apa itu chunking?", "answer": "Memotong dokumen panjang menjadi potongan-potongan kecil sebelum di-embedding, agar tiap potongan fokus pada satu topik dan hasil retrieval lebih tepat."}
+{"question": "Apa itu cosine similarity?", "answer": "Ukuran kemiripan dua vektor berdasarkan sudut di antara keduanya. Nilainya 1 berarti sangat mirip; dipakai untuk merangking hasil retrieval."}
+{"question": "Apa itu LLM?", "answer": "Large Language Model: model neural network berukuran besar yang dilatih untuk memprediksi kata berikutnya dalam teks. Contoh: Qwen, Llama, Mistral."}
+{"question": "Apa itu transformer?", "answer": "Arsitektur neural network berbasis mekanisme attention yang menjadi fondasi hampir semua LLM modern."}
+{"question": "Apa itu token?", "answer": "Unit teks terkecil yang diproses model — bisa berupa kata atau potongan kata. Model memiliki batas jumlah token yang bisa diproses sekaligus (context window)."}
+{"question": "Apa itu context window?", "answer": "Jumlah maksimum token yang bisa diterima model dalam satu prompt, mencakup instruksi, konteks dokumen, dan jawaban."}
+{"question": "Apa itu halusinasi pada LLM?", "answer": "Kondisi ketika LLM menjawab dengan percaya diri tetapi faktanya salah atau tidak berdasar, karena model hanya memprediksi kata yang paling mungkin."}
+{"question": "Apa itu prompt engineering?", "answer": "Teknik menyusun instruksi agar output LLM sesuai harapan: buat jelas dan spesifik, beri konteks yang cukup, dan sertakan contoh bila perlu."}
+{"question": "Apa itu temperature pada LLM?", "answer": "Parameter yang mengatur keacakan output. Temperature rendah membuat jawaban deterministik dan konsisten; tinggi membuat jawaban lebih variatif dan kreatif."}
+{"question": "Apa itu fine-tuning?", "answer": "Melatih ulang model pre-trained dengan data spesifik agar performanya bagus di tugas tertentu, misalnya gaya bahasa perusahaan."}
+{"question": "Apa itu LoRA?", "answer": "Low-Rank Adaptation: teknik fine-tuning hemat yang hanya melatih sedikit parameter tambahan, sehingga murah dan cepat dibanding fine-tuning penuh."}
+{"question": "Apa itu reranking dalam RAG?", "answer": "Tahap kedua setelah retrieval awal: kandidat dokumen diurutkan ulang dengan model yang lebih akurat agar dokumen terbaik menempati peringkat teratas."}
+{"question": "Apa itu quantization?", "answer": "Kompresi bobot model, misalnya dari 16-bit ke 4-bit, agar model muat di RAM dan jalan di CPU dengan sedikit penurunan kualitas."}
+{"question": "Apa itu AI agent?", "answer": "Sistem berbasis LLM yang bisa memakai tools, merencanakan langkah-langkah, dan bertindak mandiri untuk mencapai suatu tujuan."}
+{"question": "Apa yang diukur dalam evaluasi RAG?", "answer": "Dua hal: kualitas retrieval (apakah dokumen yang diambil relevan) dan kualitas generation (apakah jawabannya benar dan berdasar dokumen)."}
+{"question": "Apa itu guardrail pada chatbot?", "answer": "Aturan dan pemeriksaan yang membatasi perilaku chatbot, misalnya menolak topik terlarang atau memvalidasi output sebelum ditampilkan."}
+{"question": "Apa itu LangChain dan LlamaIndex?", "answer": "Framework Python untuk membangun aplikasi LLM seperti RAG dan agen, menyediakan komponen siap pakai untuk retrieval, chaining, dan integrasi model."}
+{"question": "Apa itu Ollama?", "answer": "Tool untuk menjalankan LLM open-weight secara lokal di laptop sendiri, lengkap dengan API lokal di http://localhost:11434."}
+{"question": "Apa itu top-p (nucleus sampling)?", "answer": "Parameter sampling yang membatasi pilihan kata berikutnya hanya pada subset kata dengan probabilitas kumulatif tertinggi, untuk menyeimbangkan kualitas dan variasi."}
+{"question": "Apa itu system prompt?", "answer": "Instruksi awal yang diberikan ke chatbot untuk menetapkan peran, gaya, dan batasan perilakunya sebelum percakapan dimulai."}
+{"question": "Apa itu embedding model? Beri contoh.", "answer": "Model khusus yang mengubah teks menjadi vektor embedding. Contoh: sentence-transformers dengan model all-MiniLM-L6-v2."}
+{"question": "Kenapa RAG lebih praktis daripada fine-tuning saat data sering berubah?", "answer": "Karena cukup memperbarui dokumen dan index embedding tanpa harus melatih ulang model, sehingga lebih cepat dan murah."}

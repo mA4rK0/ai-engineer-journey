@@ -1,0 +1,10 @@
+{"question": "Jelaskan secara singkat cara kerja RAG.", "expected": "Mengambil dokumen relevan dari index (retrieval), lalu LLM menjawab berdasarkan dokumen tersebut"}
+{"question": "Apa fungsi chunking sebelum teks di-embedding?", "expected": "Memotong dokumen panjang jadi potongan kecil yang fokus agar retrieval lebih tepat"}
+{"question": "Bagaimana cara mengukur kemiripan dua embedding?", "expected": "Cosine similarity — mengukur sudut antara dua vektor"}
+{"question": "Kenapa LLM kadang mengarang jawaban yang salah?", "expected": "Halusinasi: model hanya memprediksi kata paling mungkin tanpa dasar fakta"}
+{"question": "Parameter apa yang membuat jawaban LLM lebih deterministik?", "expected": "Temperature rendah"}
+{"question": "Teknik fine-tuning apa yang hemat parameter?", "expected": "LoRA (Low-Rank Adaptation)"}
+{"question": "Apa gunanya reranking dalam pipeline RAG?", "expected": "Mengurutkan ulang kandidat dokumen dengan model yang lebih akurat"}
+{"question": "Bagaimana cara menjalankan LLM tanpa internet setelah model didownload?", "expected": "Dengan Ollama, model jalan 100 persen lokal di laptop"}
+{"question": "Apa itu guardrail pada chatbot?", "expected": "Aturan dan pemeriksaan yang membatasi perilaku dan output chatbot"}
+{"question": "Kenapa update dokumen lebih praktis daripada fine-tuning ulang saat data berubah?", "expected": "RAG cukup update index embedding tanpa melatih ulang model"}

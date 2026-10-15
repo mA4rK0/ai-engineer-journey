@@ -104,11 +104,11 @@ Karena semua vektor sudah **ternormalisasi** (L2 norm = 1, berkat tahap Normaliz
 
 ### Eksperimen 1 — Pertanyaan parafrase: "Jelaskan cara kerja RAG"
 
-| Peringkat | Skor | Dokumen |
-| --- | --- | --- |
-| #1 | 0.517 | Apa yang diukur dalam evaluasi RAG? |
-| #2 | 0.509 | Apa itu reranking dalam RAG? |
-| #3 | 0.394 | Kenapa RAG lebih praktis daripada fine-tuning? |
+| Peringkat | Skor  | Dokumen                                        |
+| --------- | ----- | ---------------------------------------------- |
+| #1        | 0.517 | Apa yang diukur dalam evaluasi RAG?            |
+| #2        | 0.509 | Apa itu reranking dalam RAG?                   |
+| #3        | 0.394 | Kenapa RAG lebih praktis daripada fine-tuning? |
 
 **Kesimpulan:** Ketiga dokumen semuanya bertopik RAG. Retrieval-mu mencari **makna**, bukan kata — terbukti, karena pertanyaanmu tidak mengandung kata "evaluasi" atau "reranking" sama sekali, tetapi dokumen-dokumen itu tetap muncul.
 
@@ -116,21 +116,21 @@ Karena semua vektor sudah **ternormalisasi** (L2 norm = 1, berkat tahap Normaliz
 
 ### Eksperimen 2 — Pertanyaan persis: "Apa itu quantization?"
 
-| Peringkat | Skor | Dokumen |
-| --- | --- | --- |
-| #1 | **0.648** | **Apa itu quantization? (dokumen yang benar)** |
-| #2 | 0.581 | Apa itu context window? |
-| #3 | 0.541 | Apa itu prompt engineering? |
+| Peringkat | Skor      | Dokumen                                        |
+| --------- | --------- | ---------------------------------------------- |
+| #1        | **0.648** | **Apa itu quantization? (dokumen yang benar)** |
+| #2        | 0.581     | Apa itu context window?                        |
+| #3        | 0.541     | Apa itu prompt engineering?                    |
 
 **Kesimpulan:** Kemenangan bersih — pertanyaan persis → dokumen yang benar di peringkat #1 dengan skor tertinggi yang jelas. Kalau semua query seperti ini, RAG sudah sempurna.
 
 ### Eksperimen 3 — Pertanyaan ngawur: "Berapa harga cabai hari ini?"
 
-| Peringkat | Skor | Dokumen |
-| --- | --- | --- |
-| #1 | 0.426 | Apa itu AI agent? |
-| #2 | 0.418 | Apa itu halusinasi pada LLM? |
-| #3 | 0.390 | Apa itu Ollama? |
+| Peringkat | Skor  | Dokumen                      |
+| --------- | ----- | ---------------------------- |
+| #1        | 0.426 | Apa itu AI agent?            |
+| #2        | 0.418 | Apa itu halusinasi pada LLM? |
+| #3        | 0.390 | Apa itu Ollama?              |
 
 **Kesimpulan:** Semua skor **rendah** dan dokumennya tidak nyambung. Sistem mengembalikan "yang paling tidak buruk", bukan yang benar. Ini perilaku yang **diharapkan** — dan ini eksperimen yang paling penting hari ini, karena mengajarkan pelajaran tentang threshold (lihat Bagian 5).
 
@@ -144,11 +144,11 @@ Di script `retrieve.py`, tertulis panduan: "0.0–0.3 = tidak nyambung". **Itu s
 
 ### Ambang yang terkalibrasi (dari data nyata hari ini)
 
-| Skor | Arti (untuk model + dataset ini) |
-| --- | --- |
-| **> 0.6** | **Kuat** — dokumen sangat relevan (contoh: quantization, 0.648) |
-| **0.5 – 0.6** | **Sedang** — dokumen relevan (contoh: parafrase RAG, 0.51–0.52) |
-| **< 0.5** | **Lemah** — dokumen tidak cukup nyambung (contoh: cabai, 0.39–0.43) |
+| Skor          | Arti (untuk model + dataset ini)                                    |
+| ------------- | ------------------------------------------------------------------- |
+| **> 0.6**     | **Kuat** — dokumen sangat relevan (contoh: quantization, 0.648)     |
+| **0.5 – 0.6** | **Sedang** — dokumen relevan (contoh: parafrase RAG, 0.51–0.52)     |
+| **< 0.5**     | **Lemah** — dokumen tidak cukup nyambung (contoh: cabai, 0.39–0.43) |
 
 ### Pelajaran umumnya
 
@@ -160,7 +160,7 @@ Di script `retrieve.py`, tertulis panduan: "0.0–0.3 = tidak nyambung". **Itu s
 
 Eksperimen cabai mengajarkan satu konsep production yang penting:
 
-> **Di RAG sungguhan, kamu memasang threshold.** Jika skor dokumen terbaik masih di bawah ambang (misalnya < 0.5), bot **tidak boleh** menjawab dari dokumen yang salah. Sebaliknya, bot menjawab: *"Maaf, jawaban tidak ada di dokumen saya."*
+> **Di RAG sungguhan, kamu memasang threshold.** Jika skor dokumen terbaik masih di bawah ambang (misalnya < 0.5), bot **tidak boleh** menjawab dari dokumen yang salah. Sebaliknya, bot menjawab: _"Maaf, jawaban tidak ada di dokumen saya."_
 
 Ini adalah bentuk paling sederhana dari **guardrail** — aturan yang membatasi perilaku chatbot agar tidak mengarang jawaban dari dokumen yang tidak relevan. Tanpa threshold, RAG akan selalu "menjawab" — bahkan ketika ia seharusnya bilang tidak tahu. Nanti di fase LLM depth, guardrail menjadi topik tersendiri.
 
@@ -193,8 +193,6 @@ Pertanyaan → Retrieval (top-3 dokumen) → Dokumen + pertanyaan dikirim ke Oll
 → Ollama menulis jawaban berdasarkan dokumen → Jawaban ditampilkan
 ```
 
-Untuk pertama kalinya, sistemmu tidak hanya *mencari* — ia *menjawab*. Itulah saat RAG mini-mu berubah dari "mesin pencari" menjadi "chatbot".
+Untuk pertama kalinya, sistemmu tidak hanya _mencari_ — ia _menjawab_. Itulah saat RAG mini-mu berubah dari "mesin pencari" menjadi "chatbot".
 
 ---
-
-*Catatan ini dibuat oleh Zappy sebagai catatan belajar Hari 2. Kalau ada bagian yang kurang jelas, tanyakan langsung — tidak ada pertanyaan bodoh di minggu validasi.*

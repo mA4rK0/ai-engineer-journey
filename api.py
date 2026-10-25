@@ -5,6 +5,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
 from rerank import rerank
+import os
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 
 print("Loading embedding model...")
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -52,7 +54,7 @@ def ask(req: AskRequest):
             
             Pertanyaan: {req.question}
             Jawaban:"""
-    r = requests.post("http://localhost:11434/api/generate", json={"model": "qwen2.5:3b", "prompt": prompt, "stream": False}, timeout=120)
+    r = requests.post(f"{OLLAMA_URL}/api/generate", json={"model": "qwen2.5:3b", "prompt": prompt, "stream": False}, timeout=120)
     answer = r.json()["response"]
 
     return AskResponse(
